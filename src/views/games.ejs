@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+<body>
+
+    <%- include('partials/nav.ejs') %>
+    <main style="padding-bottom: 75px;">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="card mt-4">
+                    <div class="card-header">                    
+                        <%= today.toDateString() %>                    </div>
+                        <div class="card-body">                    
+                            <table id="newGames" class="table table-striped">                    
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="display:none;">GameID</th>
+                                        <th>Date</th>
+                                        <th>Result</th>
+                                        <th>Role</th>
+                                        <th>Map</th>
+                                        <th>Type</th>
+                                        <th>SR Diff</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (var i = 0; i < newGames.length; i++) { %>                                    
+                                        <tr>                                        
+                                            <td style="display:none;"><%= newGames[i].GameID %></td>
+                                            <td><%= newGames[i].Date.toDateString() %></td>
+                                            <td><%= newGames[i].Result %></td>
+                                            <td><%= newGames[i].Role %></td>
+                                            <td><%= newGames[i].name %></td>
+                                            <td><%= newGames[i].type %></td>
+                                            <td><%= newGames[i].SRDiff %></td>
+                                        </tr>    
+                                    <% } %>                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+            
+                <div class="card mt-4">
+                    <div class="card-header">
+                        Games
+                    </div>
+                        <div class="card-body">                    
+                            <table id="allGames" class="table table-striped">                    
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="display:none;">GameID</th>
+                                        <th>Date</th>
+                                        <th>Result</th>
+                                        <th>Role</th>
+                                        <th>Map</th>
+                                        <th>Type</th>
+                                        <th>SR Diff</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (var i = 0; i < allGames.length; i++) { %>                                    
+                                        <tr>                                        
+                                            <td style="display:none;"><%= allGames[i].GameID %></td>
+                                            <td><%= allGames[i].Date.toDateString() %></td>
+                                            <td><%= allGames[i].Result %></td>
+                                            <td><%= allGames[i].Role %></td>
+                                            <td><%= allGames[i].name %></td>
+                                            <td><%= allGames[i].type %></td>
+                                            <td><%= allGames[i].SRDiff %></td>
+                                        </tr>    
+                                    <% } %>                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </main>
+    <footer class="footer">
+   <%- include('partials/footer.ejs') %>
+   </footer>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/popper.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/datatables.min.js" type="text/javascript"></script>
+    <script src="js/tables.js" type="text/javascript"></script>
+    <script src="js/site.js" type="text/javascript"></script>
+
+</body>
+</html>

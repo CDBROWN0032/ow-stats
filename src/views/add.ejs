@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs') %>
+
+</head>
+<body>
+
+    <%- include('partials/nav.ejs') %>
+    <main>
+        <div class="container">
+            <div class="container-fluid">
+                <div class="card mt-2">
+                    <div class="card-body"> 
+                    <form method="POST" action="/submit-form">
+                        <div>
+                            <label>Date:</label>
+                            <input type="date" name="date" id="datepicker">
+                        </div>
+                        <div>
+                            <label for="result">Result:</label>
+                            <select id="result" name="result">
+                                <option value="WIN">Victory</option>
+                                <option value="LOSS">Defeat</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="role">Role:</label>
+                            <select id="role" name="role">
+                                <option value="DPS">DPS</option>
+                                <option value="TANK">TANK</option>
+                                <option value="HEALER">HEALER</option>                                
+                            </select>
+                        </div>
+                        <div>
+                            <label for="map">Map:</label>
+                            <select id="map" name="map">
+                             <% for (var i = 0; i < data.length; i++) { %>                                    
+                                    <option value="<%= data[i].mapid %>"><%= data[i].name %></option>                                        
+                                <% } %>                 
+                            </select>
+                        </div>
+                        <div>
+                            <label>SR:</label>
+                            <input type="number" name="sr" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>    
+    </main>
+    <footer class="footer">
+   <%- include('partials/footer.ejs') %>
+   </footer>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/popper.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/datatables.min.js" type="text/javascript"></script>    
+</body>
+</html>
