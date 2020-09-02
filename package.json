@@ -11,15 +11,16 @@
     "black-dashboard": "^1.0.0",
     "bootstrap": "^4.5.2",
     "chalk": "^4.1.0",
+    "datatable": "^2.0.2",
     "debug": "^4.1.1",
     "ejs": "^3.1.5",
     "express": "^4.16.4",
     "jquery": "^3.5.1",
     "knex": "^0.21.5",
+    "mdbootstrap": "^4.19.1",
     "morgan": "^1.10.0",
     "pg": "^8.3.3",
-    "popper": "^1.0.1",
-    "pug": "^3.0.0"
+    "popper": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^7.2.0",
