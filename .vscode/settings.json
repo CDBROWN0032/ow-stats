@@ -1,8 +1,10 @@
 {
     "cSpell.ignoreWords": [
+        "chartjs",
         "mapid",
         "overwatch",
         "postgres",
         "skillrankdifference"
-    ]
+    ],
+    "editor.formatOnSave": true
 }
