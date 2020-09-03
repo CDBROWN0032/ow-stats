@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('partials/head.ejs') %>
-
-</head>
-<body>
-
-    <%- include('partials/nav.ejs') %>
-    <main>
-        <div class="container">
-            <div class="container-fluid">
-                <div class="card mt-2">
-                    <div class="card-body"> 
-                    <form method="POST" action="/submit-form">
+ <form method="POST" action="/submit-form">
                         <div class="form-row">
                             <div class="col">
                                 <label>Date:</label>
@@ -23,12 +9,13 @@
                                 <select class="form-control" id="result" name="result" required>
                                     <option value="WIN">Victory</option>
                                     <option value="LOSS">Defeat</option>
+                                    <option value="DRAW">Draw</option>
                                 </select>                                
                             </div>
                                 
                         </div>
                         <div class="form-row">
-                                <div class="col">
+                                <div class="col-4">
                                     <label for="role">Role:</label>
                                     <select class="form-control" id="role" name="role" required>
                                         <option value="DPS">DPS</option>
@@ -36,34 +23,24 @@
                                         <option value="HEALER">HEALER</option>                                
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col-4">
                                     <label for="map">Map:</label>
                                     <select class="form-control" id="map" name="map" required>
-                                    <% for (var i = 0; i < data.length; i++) { %>                                    
-                                            <option value="<%= data[i].mapid %>"><%= data[i].name %></option>                                        
+                                    <% for (var i = 0; i < maps.length; i++) { %>                                    
+                                            <option value="<%= maps[i].mapid %>"><%= maps[i].name %></option>                                        
                                         <% } %>                 
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col-2">
                                     <label for="sr">SR:</label>
                                     <input class="form-control" type="number" name="sr" id="sr" required />
                                 </div>
+                                <div class="col-2">
+                                    <label for="season">Season:</label>
+                                    <input class="form-control" type="number" name="season" id="season" readonly required value="24"/>
+                                </div>  
+                                
                         </div>
                                 <br />
                         <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </form>
-                    </div>                    
-                </div>
-            </div>
-        </div>    
-    </main>
-    <footer class="footer">
-   <%- include('partials/footer.ejs') %>
-   </footer>
-
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/popper.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/datatables.min.js" type="text/javascript"></script>    
-</body>
-</html>

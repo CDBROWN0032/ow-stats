@@ -3,38 +3,45 @@
 <head>
     <%- include('partials/head.ejs') %>
 </head>
-<body>
+<body style="background: light-blue;" >
 
     <%- include('partials/nav.ejs') %>
     <main style="padding-bottom: 75px;">
         <div class="container">
+        <div class="row mt-2">
+
+            <button class="button btn-dark ml-auto" data-toggle="modal" data-target="#addGame">+ add game </button>
+
+        </div>
             <div class="container-fluid">
-                <div class="card mt-4">
+                <div class="card mt-4 shadow">
                     <div class="card-header">                    
                         <%= today.toDateString() %>                    </div>
                         <div class="card-body">                    
                             <table id="newGames" class="table table-striped">                    
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th style="display:none;">GameID</th>
+                                        <th>SeqNo</th>
                                         <th>Date</th>
                                         <th>Result</th>
                                         <th>Role</th>
                                         <th>Map</th>
                                         <th>Type</th>
                                         <th>SR Diff</th>
+                                        <th>Season</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% for (var i = 0; i < newGames.length; i++) { %>                                    
                                         <tr>                                        
-                                            <td style="display:none;"><%= newGames[i].GameID %></td>
+                                            <td><%= newGames[i].GameID %></td>
                                             <td><%= newGames[i].Date.toDateString() %></td>
                                             <td><%= newGames[i].Result %></td>
                                             <td><%= newGames[i].Role %></td>
                                             <td><%= newGames[i].name %></td>
                                             <td><%= newGames[i].type %></td>
-                                            <td><%= newGames[i].SRDiff %></td>
+                                            <td class="text-right"><%= newGames[i].SRDiff %></td>
+                                            <td class="text-right"><%= newGames[i].Season %></td>
                                         </tr>    
                                     <% } %>                                 
                                 </tbody>
@@ -43,7 +50,7 @@
                     </div>
                 
             
-                <div class="card mt-4">
+                <div class="card mt-4 shadow">
                     <div class="card-header">
                         Games
                     </div>
@@ -51,25 +58,27 @@
                             <table id="allGames" class="table table-striped">                    
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th style="display:none;">GameID</th>
+                                        <th>SeqNo</th>
                                         <th>Date</th>
                                         <th>Result</th>
                                         <th>Role</th>
                                         <th>Map</th>
                                         <th>Type</th>
                                         <th>SR Diff</th>
+                                        <th>Season</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <% for (var i = 0; i < allGames.length; i++) { %>                                    
                                         <tr>                                        
-                                            <td style="display:none;"><%= allGames[i].GameID %></td>
+                                            <td><%= allGames[i].GameID %></td>
                                             <td><%= allGames[i].Date.toDateString() %></td>
                                             <td><%= allGames[i].Result %></td>
                                             <td><%= allGames[i].Role %></td>
                                             <td><%= allGames[i].name %></td>
                                             <td><%= allGames[i].type %></td>
-                                            <td><%= allGames[i].SRDiff %></td>
+                                            <td class="text-right"><%= allGames[i].SRDiff %></td>
+                                            <td class="text-right"><%= allGames[i].Season %></td>
                                         </tr>    
                                     <% } %>                                 
                                 </tbody>
@@ -93,3 +102,21 @@
 
 </body>
 </html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Game</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <%- include('partials/addForm.ejs') %>
+      </div>
+    </div>
+  </div>
+</div>

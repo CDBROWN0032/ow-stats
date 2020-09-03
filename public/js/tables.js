@@ -2,6 +2,7 @@ $(document).ready(function () {
   $('#allGames').DataTable({
     searching: true,
     paging: true,
+    order: [[0, 'desc']],
     createdRow: function (row, data, dataIndex) {
       setRowColor(data, row);
     },

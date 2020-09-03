@@ -34,12 +34,15 @@ app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dis
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+// Routes
 router.route('/').get((req, res) => {
   res.render('index');
 });
+
 router.route('/Charts').get((req, res) => {
   res.render('charts');
 });
+
 router.route('/Games').get(async (req, res) => {
   const today = new Date();
   const allGames = await knex
@@ -55,25 +58,26 @@ router.route('/Games').get(async (req, res) => {
     .where('Date', today)
     .then((rows) => rows);
 
-  res.render('games', { allGames, newGames, today });
-});
-router.route('/add').get(async (req, res) => {
-  const data = await knex
+  const maps = await knex
     .select()
     .from('maps')
     .then((rows) => rows);
-  res.render('add', { data });
+
+  res.render('games', { allGames, newGames, today, maps });
 });
+
 app.use('/', router);
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+// Post
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.post('/submit-form', urlencodedParser, async (req, res) => {
   const data = req.body;
   debug(data);
-  await knex().insert({ Date: data.date, Result: data.result, Role: data.role, MapID: data.map, SRDiff: data.sr }).into('games');
+  await knex().insert({ Date: data.date, Result: data.result, Role: data.role, MapID: data.map, SRDiff: data.sr, Season: data.season }).into('games');
   res.redirect('games');
 });
 
+// Listener
 app.listen(port, () => {
   debug(`Server running at ${chalk.green('http://localhost:')} ${chalk.green(port)}`);
 });
